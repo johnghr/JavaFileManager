@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "folder")
+@Table(name = "folders")
 public class Folder {
 
     @Id
