@@ -28,15 +28,17 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
-        File audio = new File("audio", ".wav", 20);
-        fileRepository.save(audio);
-        File video = new File("video", ".mp4", 53);
-        fileRepository.save(video);
-        Folder vids = new Folder("vids");
-        folderRepository.save(vids);
-        Folder tunes = new Folder("tunes");
-        folderRepository.save(tunes);
+
         User user = new User("Susan");
         userRepository.save(user);
+        Folder vids = new Folder("vids", user);
+        folderRepository.save(vids);
+        Folder tunes = new Folder("tunes", user);
+        folderRepository.save(tunes);
+        File audio = new File("audio", ".wav", 20, tunes);
+        fileRepository.save(audio);
+        File video = new File("video", ".mp4", 53, vids);
+        fileRepository.save(video);
+
     }
 }
